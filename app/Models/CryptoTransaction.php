@@ -141,9 +141,6 @@ class CryptoTransaction extends Model
         };
     }
 
-}
-
-
     public function getCounterpartyAddressAttribute(): ?string
     {
         return $this->is_incoming ? $this->from_address : $this->to_address;
@@ -182,7 +179,6 @@ class CryptoTransaction extends Model
         ]);
     }
 
-
     public function getRequiredConfirmations(): int
     {
         return match($this->currency) {
@@ -192,7 +188,6 @@ class CryptoTransaction extends Model
             default => 3
         };
     }
-
 
     public function hasEnoughConfirmations(): bool
     {
@@ -238,7 +233,7 @@ class CryptoTransaction extends Model
             self::STATUS_PENDING,
             self::STATUS_PROCESSING
         ]);
-    
+    }
 
     public function isRetryable(): bool
     {
